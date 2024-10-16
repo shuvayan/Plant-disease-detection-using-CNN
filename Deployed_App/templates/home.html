@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Plant Disease Detection</title>
+    <style>
+        /* Global Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: linear-gradient(to right bottom, #0d387a, #006ab8, #009bc4, #00c791, #12eb1b);;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+          background-image: linear-gradient(to right, #0d387a, #004273, #004458, #004237, #0e3e1a);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .upload-box {
+          background-image: linear-gradient(to left, #0d387a, #004273, #004458, #004237, #0e3e1a);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .upload-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .upload-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .upload-box p {
+            color: white;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            padding: 15px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 10px;
+            width: 90%;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        button {
+            background: linear-gradient(135deg, #00bfa5, #00695c);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #00796b, #004d40);
+        }
+
+        footer {
+          background-image: linear-gradient(to right, #0d387a, #004273, #004458, #004237, #0e3e1a);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .upload-box {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Plant Disease Detection</h1>
+</header>
+
+<div class="container">
+    <div class="upload-box">
+        <h2>Upload Plant Image</h2>
+        <p>Select an image of your plant to detect any diseases.</p>
+        <form action="/submit" method="POST" enctype="multipart/form-data">
+            <input type="file" id="actual-btn" name="image" style="display: none;" required>
+            <label for="actual-btn">Choose File</label>
+            <span id="file-chosen">No file chosen</span>
+            <br>
+            <button type="submit">Detect Disease</button>
+        </form>        
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Plant Disease Detection. All rights reserved.</p>
+    <p>Developed by Ravi</p>
+</footer>
+
+<script>
+  const actualBtn = document.getElementById('actual-btn');
+
+  const fileChosen = document.getElementById('file-chosen');
+
+  actualBtn.addEventListener('change', function () {
+      fileChosen.textContent = this.files[0].name
+  })
+</script>
+</body>
+</html>
